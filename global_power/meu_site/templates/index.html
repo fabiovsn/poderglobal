@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div class='container_new'>
+    <form method='GET'>
+        <div class='banner'>
+            <div class='titulo'>
+                <h1>Comparação de Poder Militar</h1>
+            </div>
+            <div class='paises'>
+                <div class='pais1'>
+                    <input type="text" list="listapaises" placeholder="Pesquisar" name='search1' id='search1'>
+                    <datalist id="listapaises">
+                        {% for resultados in Paises %}
+                        <option value="{{ resultados.nome_pais }}"> {{ resultados.nome_pais }}</option>
+                        {% endfor %}
+                    </datalist>
+                </div>
+                <div class='icon_vs'>
+                    <img src="{% static 'img/versus2.png' %}">
+                </div>
+                <div class='pais2'>
+                    <input type="text" list="listapaises2" placeholder="Pesquisar" name='search2' id='search2'>
+                    <datalist id="listapaises2">
+                        {% for resultados in Paises %}
+                        <option value="{{ resultados.nome_pais }}"> {{ resultados.nome_pais }}</option>
+                        {% endfor %}
+                    </datalist>
+                </div>
+                <input type='submit' value='Comparar' id="btn_comparar">
+            </div>
+        </div>
+    </form>
+    <div class = 'result'>
+        <div class='resultados'>
+            {% for resultado1 in Pais1 %}
+            {% for resultado2 in Pais2 %}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <td></td>
+                    <th scope="col">{{ resultado1.nome_pais }}</th>
+                    <th scope="col">{{ resultado2.nome_pais }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Código do país</th>
+                    <td></td>
+                    <td>{{ resultado1.codigo_pais }}</td>
+                    <td>{{ resultado2.codigo_pais }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pessoal ativo</th>
+                    <td><img class='icones' src="{% static 'img/icons/pessoal_ativo.png' %}"></td>
+                    <td>{{ resultado1.qtd_pessoal_ativo }}</td>
+                    <td>{{ resultado2.qtd_pessoal_ativo }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Porta-aviões</th>
+                    <td><img class='icones' src="{% static 'img/icons/porta_avioes.png' %}"></td>
+                    <td>{{ resultado1.qtd_porta_avioes }}</td>
+                    <td>{{ resultado2.qtd_porta_avioes }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Veículos blindados</th>
+                    <td><img class='icones' src="{% static 'img/icons/veiculo_blindado.png' %}"></td>
+                    <td>{{ resultado1.qtd_veiculos_blindados }}</td>
+                    <td>{{ resultado2.qtd_veiculos_blindados }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Helicópteros de ataque</th>
+                    <td><img class='icones' src="{% static 'img/icons/helicoptero_ataque.png' %}"></td>
+                    <td>{{ resultado1.qtd_helicopteros_de_ataque }}</td>
+                    <td>{{ resultado2.qtd_helicopteros_de_ataque }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pessoal disponível</th>
+                    <td><img class='icones' src="{% static 'img/icons/pessoal_disponivel.png' %}"></td>
+                    <td>{{ resultado1.qtd_pessoal_disponivel }}</td>
+                    <td>{{ resultado2.qtd_pessoal_disponivel }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Corvetas</th>
+                    <td><img class='icones' src="{% static 'img/icons/corveta.png' %}"></td>
+                    <td>{{ resultado1.qtd_corvetas }}</td>
+                    <td>{{ resultado2.qtd_corvetas }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Orçamento de defesa ($)</th>
+                    <td><img class='icones' src="{% static 'img/icons/orcamento.png' %}"></td>
+                    <td>{{ resultado1.orcamento_de_defesa }}</td>
+                    <td>{{ resultado2.orcamento_de_defesa }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Contratorpedeiros</th>
+                    <td><img class='icones' src="{% static 'img/icons/contratorpedeiro.png' %}"></td>
+                    <td>{{ resultado1.qtd_contratorpedeiro }}</td>
+                    <td>{{ resultado2.qtd_contratorpedeiro }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Caças interceptadores</th>
+                    <td><img class='icones' src="{% static 'img/icons/cacas_interceptadores.png' %}"></td>
+                    <td>{{ resultado1.qtd_cacas_interceptadores }}</td>
+                    <td>{{ resultado2.qtd_cacas_interceptadores }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pessoal disponível para serviço militar</th>
+                    <td><img class='icones' src="{% static 'img/icons/pessoal_disponivel_militar.png' %}"></td>
+                    <td>{{ resultado1.qtd_disponivel_para_servico_militar }}</td>
+                    <td>{{ resultado2.qtd_disponivel_para_servico_militar }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Fragatas</th>
+                    <td><img class='icones' src="{% static 'img/icons/fragata.png' %}"></td>
+                    <td>{{ resultado1.qtd_fragatas }}</td>
+                    <td>{{ resultado2.qtd_fragatas }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Porta-helicópteros</th>
+                    <td><img class='icones' src="{% static 'img/icons/porta_helicoptero.png' %}"></td>
+                    <td>{{ resultado1.qtd_porta_helicopteros }}</td>
+                    <td>{{ resultado2.qtd_porta_helicopteros }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Força de trabalho</th>
+                    <td><img class='icones' src="{% static 'img/icons/forca_trabalho.png' %}"></td>
+                    <td>{{ resultado1.qtd_forca_de_trabalho }}</td>
+                    <td>{{ resultado2.qtd_forca_de_trabalho }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Navios da Marinha</th>
+                    <td><img class='icones' src="{% static 'img/icons/navio_marinha.png' %}"></td>
+                    <td>{{ resultado1.qtd_navios_da_marinha }}</td>
+                    <td>{{ resultado2.qtd_navios_da_marinha }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Forças Paramilitares</th>
+                    <td><img class='icones' src="{% static 'img/icons/paramilitar.png' %}"></td>
+                    <td>{{ resultado1.qtd_forcas_paramilitares }}</td>
+                    <td>{{ resultado2.qtd_forcas_paramilitares }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Navios de Patrulha</th>
+                    <td><img class='icones' src="{% static 'img/icons/navio_patrulha.png' %}"></td>
+                    <td>{{ resultado1.qtd_navios_de_patrulha }}</td>
+                    <td>{{ resultado2.qtd_navios_de_patrulha }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Portos</th>
+                    <td><img class='icones' src="{% static 'img/icons/porto.png' %}"></td>
+                    <td>{{ resultado1.qtd_portos }}</td>
+                    <td>{{ resultado2.qtd_portos }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pessoal na reserva</th>
+                    <td><img class='icones' src="{% static 'img/icons/reservas.png' %}"></td>
+                    <td>{{ resultado1.qtd_pessoal_da_reserva }}</td>
+                    <td>{{ resultado2.qtd_pessoal_da_reserva }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Lançadores de foguete</th>
+                    <td><img class='icones' src="{% static 'img/icons/lancador_foguete.png' %}"></td>
+                    <td>{{ resultado1.qtd_lancadores_de_foguete }}</td>
+                    <td>{{ resultado2.qtd_lancadores_de_foguete }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Artilharia autopropulsada</th>
+                    <td><img class='icones' src="{% static 'img/icons/artilharia.png' %}"></td>
+                    <td>{{ resultado1.qtd_artilharia_autopropulsada }}</td>
+                    <td>{{ resultado2.qtd_artilharia_autopropulsada }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Aviões de missões especiais</th>
+                    <td><img class='icones' src="{% static 'img/icons/avioes_especiais.png' %}"></td>
+                    <td>{{ resultado1.qtd_avioes_missoes_especiais }}</td>
+                    <td>{{ resultado2.qtd_avioes_missoes_especiais }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Área total m²</th>
+                    <td><img class='icones' src="{% static 'img/icons/area_total.png' %}"></td>
+                    <td>{{ resultado1.area_total_m2 }}</td>
+                    <td>{{ resultado2.area_total_m2 }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Submarinos</th>
+                    <td><img class='icones' src="{% static 'img/icons/submarino.png' %}"></td>
+                    <td>{{ resultado1.qtd_submarinos }}</td>
+                    <td>{{ resultado2.qtd_submarinos }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tanques</th>
+                    <td><img class='icones' src="{% static 'img/icons/tanque.png' %}"></td>
+                    <td>{{ resultado1.qtd_tanques }}</td>
+                    <td>{{ resultado2.qtd_tanques }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Força total de aeronaves</th>
+                    <td><img class='icones' src="{% static 'img/icons/forca_aeronaves.png' %}"></td>
+                    <td>{{ resultado1.qtd_forca_total_de_aeronaves }}</td>
+                    <td>{{ resultado2.qtd_forca_total_de_aeronaves }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">População total</th>
+                    <td><img class='icones' src="{% static 'img/icons/populacao.png' %}"></td>
+                    <td>{{ resultado1.qtd_populacao_total }}</td>
+                    <td>{{ resultado2.qtd_populacao_total }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Artilharia rebocada</th>
+                    <td><img class='icones' src="{% static 'img/icons/artilharia_rebocada.png' %}"></td>
+                    <td>{{ resultado1.qtd_artilharia_rebocada }}</td>
+                    <td>{{ resultado2.qtd_artilharia_rebocada }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Aviões de treinamento</th>
+                    <td><img class='icones' src="{% static 'img/icons/aviao_treinamento.png' %}"></td>
+                    <td>{{ resultado1.qtd_avioes_de_treinamento }}</td>
+                    <td>{{ resultado2.qtd_avioes_de_treinamento }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Cargueiros</th>
+                    <td><img class='icones' src="{% static 'img/icons/cargueiro.png' %}"></td>
+                    <td>{{ resultado1.qtd_cargueiros }}</td>
+                    <td>{{ resultado2.qtd_cargueiros }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Hidrovias</th>
+                    <td><img class='icones' src="{% static 'img/icons/hidrovia.png' %}"></td>
+                    <td>{{ resultado1.qtd_hidrovias }}</td>
+                    <td>{{ resultado2.qtd_hidrovias }}</td>
+                </tr>
+                </tbody>
+            </table>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

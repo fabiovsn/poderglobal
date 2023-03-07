@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/global_power/api/models.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/global_power/api/serializers.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/global_power/api/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/global_power/api/views.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/global_power/global_power/settings.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/global_power/global_power/urls.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tratamento_dados.py" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
